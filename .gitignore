@@ -1,0 +1,90 @@
+# ==========================================
+# GÜVENLİK VE ORTAM DEĞİŞKENLERİ (KRİTİK)
+# ==========================================
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# PYTHON VE DJANGO
+# ==========================================
+# Byte-compiled / Optimize edilmiş / DLL dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django varsayılan veritabanı ve statik dosyalar
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/
+/static_root/
+
+# ==========================================
+# SANAL ORTAMLAR (VIRTUAL ENVIRONMENTS)
+# ==========================================
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# İŞLETİM SİSTEMİ: macOS
+# ==========================================
+# Klasör görüntüleme ayarları ve önbellekleri
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# İkon ve metadata dosyaları
+Icon
+._*
+
+# Çöp kutusu ve arama indeksleri
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+
+# ==========================================
+# İŞLETİM SİSTEMİ: WINDOWS
+# ==========================================
+# Resim önizleme önbellekleri
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Klasör ayar dosyaları
+Desktop.ini
+
+# Geri dönüşüm kutusu
+$RECYCLE.BIN/
+
+# ==========================================
+# IDE VE EDİTÖRLER
+# ==========================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm vb.)
+.idea/
+*.iml
+
+# Genel editör yedekleri
+*.swp
+*.swo
+*~
+
+# ==========================================
+# DOCKER VE YEREL VERİLER
+# ==========================================
+# Docker veritabanı volume'unun projeye sızmasını engellemek için
+postgres_data/
