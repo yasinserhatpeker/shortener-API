@@ -4,7 +4,7 @@ from django.db.models import QuerySet,Q
 from django.utils import timezone
 
 
-def get_active_urls(*,user) -> QuerySet[UrlItem]:
+def get_active_urls_by_user(*,user) -> QuerySet[UrlItem]:
     return UrlItem.objects.filter(user=user)
 
 
