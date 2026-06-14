@@ -8,7 +8,6 @@ def get_active_urls_by_user(*,user) -> QuerySet[UrlItem]:
     return UrlItem.objects.filter(user=user)
 
 
-
 def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]:
     now = timezone.now()
     try:
