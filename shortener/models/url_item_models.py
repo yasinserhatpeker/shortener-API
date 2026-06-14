@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 
 
-class UrlItem(models.Model):
+class UrlItem(models.Model):  # urlItem model with properties 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='urls')
     
     original_url = models.URLField(max_length=2048)
