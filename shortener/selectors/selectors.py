@@ -15,3 +15,11 @@ def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]: # fetch the a
 
     except UrlItem.DoesNotExist:
         return None
+    
+    
+def get_url_code_by_user(*,short_code:str,user) -> Optional[UrlItem]: # fetch the short urls by user
+    try:
+        return UrlItem.objects.filter(user=user,short_url=short_code)
+    except UrlItem.DoesNotExist:
+        return None
+    

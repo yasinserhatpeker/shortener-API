@@ -13,5 +13,6 @@ def decode_code(short_code:str) -> int:
     return numbers[0] if numbers else None
      
 
-# this two function is bidirectional (two-way binding)
+# These two functions are reversible/inverse operations
+
 
