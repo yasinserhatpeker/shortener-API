@@ -8,7 +8,7 @@ def encode_id(*,db_id:int) -> str:
 
 def decode_code(short_code:str) -> int:
     
-    numbers=sqids.decode(short_code) # get the short_code and converts to db_id 
+    numbers = sqids.decode(short_code) # get the short_code and converts to db_id 
     
     return numbers[0] if numbers else None
      

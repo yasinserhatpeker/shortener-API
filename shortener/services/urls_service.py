@@ -8,7 +8,7 @@ def create_short_url(*,user,original_url:str,custom_alias:str =None) -> UrlItem:
     with transaction.atomic():
         if custom_alias:
             if UrlItem.objects.filter(short_url=custom_alias).exists():
-                raise ValidationError({"This custom alias is already using."})
+                raise ValidationError({"custom_alias":'This custom alias already in use.'})
             
             return UrlItem.objects.create(
                 original_url=original_url,
