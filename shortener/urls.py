@@ -1,23 +1,23 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView,TokenObtainPairView
-from shortener.views.auth_views import RegisterView
-from shortener.views.urls_views import UrlCreateView,UrlListView,UrlDetailView
-from shortener.views.redirect_views import RedirectView
+from shortener.views.auth_views import RegisterAPIView
+from shortener.views.urls_views import UrlCreateAPIView,UrlDetailAPIView,UrlListAPIView
+from shortener.views.redirect_views import RedirectAPIView
 
 app_name='shortener'
 
 urlpatterns = [
    
    # auth paths
-    path("auth/register/", RegisterView.as_view(), name='register'),
+    path("auth/register/", RegisterAPIView.as_view(), name='register'),
     path("auth/login/", TokenObtainPairView.as_view(), name='login'),
     path("auth/refresh/", TokenRefreshView.as_view(), name='refresh'),
     
     # crud paths
-    path("urls/create/", UrlCreateView.as_view(), name='url-create'),
-    path("urls/list/",UrlListView.as_view(), name='url-list'),
-    path("urls/delete/<str:short_code>/", UrlDetailView.as_view(), name='url-delete'),
+    path("urls/create/", UrlCreateAPIView.as_view(), name='url-create'),
+    path("urls/list/",UrlListAPIView.as_view(), name='url-list'),
+    path("urls/delete/<str:short_code>/", UrlDetailAPIView.as_view(), name='url-delete'),
     
     #redirect path
-    path("<str:short_code>/", RedirectView.as_view(), name="url-redirect"),
+    path("<str:short_code>/", RedirectAPIView.as_view(), name="url-redirect"),
 ]

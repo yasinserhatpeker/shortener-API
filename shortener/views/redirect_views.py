@@ -6,7 +6,7 @@ from django.http import Http404
 from django.db.models import F
 
 
-class RedirectView(APIView):
+class RedirectAPIView(APIView):
     permission_classes=[AllowAny]
     
     def get(self,request,short_code):
