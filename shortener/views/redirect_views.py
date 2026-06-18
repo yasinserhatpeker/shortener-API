@@ -11,3 +11,12 @@ class RedirectView(APIView):
     
     def get(self,request,short_code):
         
+        url_item = get_active_url_by_code(short_code=short_code)
+        
+        if not url_item:
+            raise Http404("short url is not found or expires.")
+        
+        url_item.click_count=F('click_count') + 1
+        url_item.save(update_fields=['click_count'])
+        
+        return redirect(url_item.original_url)
