@@ -16,7 +16,7 @@ urlpatterns = [
     # crud paths
     path("urls/create/", UrlCreateView.as_view(), name='url-create'),
     path("urls/list/",UrlListView.as_view(), name='url-list'),
-    path("urls/delete/<str:short_code>", UrlDetailView.as_view(), name='url-delete'),
+    path("urls/delete/<str:short_code>/", UrlDetailView.as_view(), name='url-delete'),
     
     #redirect path
     path("<str:short_code>/", RedirectView.as_view(), name="url-redirect"),
