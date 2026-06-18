@@ -1,2 +1,2 @@
-from auth_serializer import UserResponseSerializer,UserRegisterSerializer
-from urlItem_serializer import UrlItemResponseSerializer,UrlItemCreateSerializer
+from .auth_serializer import UserRegisterSerializer,UserResponseSerializer
+from .urlItem_serializer import UrlItemResponseSerializer,UrlItemCreateSerializer
