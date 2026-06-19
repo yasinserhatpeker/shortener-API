@@ -9,6 +9,6 @@ class UrlItemResponseSerializer(serializers.ModelSerializer): # API -> Client
         read_only_fields = ['id','short_url','click_count','created_at']
         
 
-class UrlItemCreateSerializer(serializers.Serializer):   # Client->API (for validation)
+class UrlItemCreateSerializer(serializers.Serializer):   # Client -> API (for validation)
     original_url = serializers.URLField(max_length=2048)
     custom_alias = serializers.CharField(max_length=50,required=False, allow_blank=True)
