@@ -20,7 +20,7 @@ class UserRegisterSerializer(serializers.ModelSerializer): # Client -> API(for v
         
 
 class UserLogoutSerializer(serializers.Serializer):
-    refresh = serializers.CharField()
+    refresh_token = serializers.CharField()
     
         
         
