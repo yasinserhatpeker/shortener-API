@@ -1,9 +1,10 @@
-from shortener.serializers.auth_serializer import UserResponseSerializer,UserRegisterSerializer,UserLogoutSerializer
-from shortener.services.auth_service import create_user,logout_user
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny,IsAuthenticated
+
+from shortener.serializers.auth_serializer import UserResponseSerializer,UserRegisterSerializer,UserLogoutSerializer
+from shortener.services.auth_service import create_user,logout_user
 
 
 class RegisterAPIView(APIView):     # Registering new user 
