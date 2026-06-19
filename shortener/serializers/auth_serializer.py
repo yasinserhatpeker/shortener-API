@@ -18,4 +18,9 @@ class UserRegisterSerializer(serializers.ModelSerializer): # Client -> API(for v
         model=User
         fields=['username','email','password']
         
+
+class UserLogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+    
+        
         
