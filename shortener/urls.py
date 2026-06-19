@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView,TokenObtainPairView
-from shortener.views.auth_views import RegisterAPIView
+from shortener.views.auth_views import RegisterAPIView,LogoutAPIView
 from shortener.views.urls_views import UrlCreateAPIView,UrlDetailAPIView,UrlListAPIView
 from shortener.views.redirect_views import RedirectAPIView
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path("auth/register/", RegisterAPIView.as_view(), name='register'),
     path("auth/login/", TokenObtainPairView.as_view(), name='login'),
     path("auth/refresh/", TokenRefreshView.as_view(), name='refresh'),
+    path("auth/logout/", LogoutAPIView.as_view(), name='logout'),
     
     # crud paths
     path("urls/create/", UrlCreateAPIView.as_view(), name='url-create'),
