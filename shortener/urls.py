@@ -3,10 +3,16 @@ from rest_framework_simplejwt.views import TokenRefreshView,TokenObtainPairView
 from shortener.views.auth_views import RegisterAPIView,LogoutAPIView
 from shortener.views.urls_views import UrlCreateAPIView,UrlDetailAPIView,UrlListAPIView
 from shortener.views.redirect_views import RedirectAPIView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 app_name='shortener'
 
 urlpatterns = [
+    
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
    
    # auth paths
     path("auth/register/", RegisterAPIView.as_view(), name='register'),
