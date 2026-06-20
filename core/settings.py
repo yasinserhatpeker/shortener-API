@@ -1,6 +1,7 @@
 import environ
 import os
 from pathlib import Path
+from celery.schedules import crontab
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,3 +136,16 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",  
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
 ]
+
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_TIMEZONE = TIME_ZONE
+
+
+CELERY_BEAT_SCHEDULE = {
+    'sync-clicks-every-5-minutes': {
+        'task': 'shortener.tasks.sync_click_counts',
+        'schedule': crontab(minute='*/5'),
+    },
+}
