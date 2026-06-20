@@ -30,6 +30,14 @@ def sync_click_counts():
                     cache.delete(key)
                     updated_count += 1
                 else:
-                    logger.warning("")
+                    logger.warning(f"There's a count info in Redis but there's no {short_code} count info in DB.")
+            
+            except Exception as e:
+                logger.error(f"Occur an error during the update for {short_code}")
+                
+    
+    message = f"Synchronization is done and {updated_count} links are done"
+    logger.info(message)
+    return message
         
         
