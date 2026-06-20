@@ -1,7 +1,11 @@
 from shortener.models import UrlItem
+from django.core.cache import cache
 from django.db import transaction
 from rest_framework.exceptions import ValidationError
 from shortener.utils.sqids_helper import encode_id
+
+
+CACHE_TIMEOUT = 60 * 60 * 24
 
 
 def create_short_url(*,user,original_url:str,custom_alias:str = None) -> UrlItem:
@@ -25,11 +29,19 @@ def create_short_url(*,user,original_url:str,custom_alias:str = None) -> UrlItem
         
         url_item.save(update_fields=['short_url'])
         
+        cache_key = f"url_obj{url_item.short_url}"
+        cache.set(cache_key, url_item, timeout=CACHE_TIMEOUT)
+        
         
         return url_item
         
 
-def delete_short_url(*,url_item:UrlItem)->None:
+def delete_short_url(*,url_item:UrlItem) -> None:
     
-   url_item.delete()
+    short_code = url_item.short_url
+    cache_key = f"url_obj{short_code}"
+    
+    url_item.delete()
+    
+    cache.delete(cache_key)
     
