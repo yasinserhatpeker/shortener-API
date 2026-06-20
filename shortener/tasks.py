@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 @shared_task
 def sync_click_counts():
     
-    keys = cache.keys('click_*')
+    keys = cache.keys('clicks_*')
     
     if not keys:
         logger.info("There's no count info to synchronize")
