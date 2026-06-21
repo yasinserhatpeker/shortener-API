@@ -13,6 +13,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'corsheaders',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -24,7 +25,6 @@ INSTALLED_APPS = [
      'rest_framework',
      'rest_framework_simplejwt',
      'rest_framework_simplejwt.token_blacklist',
-     'corsheaders',
      'drf_spectacular',
      'shortener'
 ]
@@ -39,6 +39,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "core.urls"
 
@@ -106,13 +115,16 @@ STATIC_URL = "static/"
 
 
 AUTH_USER_MODEL = 'shortener.CustomUser'
-CORS_ALLOWED_ORIGINS = ['http://localhost:5173', "http://127.0.0.1:5173"]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10, # 10 page per request
 }
 
 SPECTACULAR_SETTINGS = {
