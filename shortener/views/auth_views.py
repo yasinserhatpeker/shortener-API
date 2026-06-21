@@ -29,6 +29,13 @@ class RegisterAPIView(APIView):     # Registering new user
 class LogoutAPIView(APIView):  ## Logging out 
     permission_classes=[IsAuthenticated]
     
+    @extend_schema(
+        request=UserLogoutSerializer,
+        responses={204:UserResponseSerializer},
+        summary="Logging out",
+        description="Logging out with blacklisting refresh token"
+    )
+    
     def post(self,request):
         serializer = UserLogoutSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
