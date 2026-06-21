@@ -1,6 +1,8 @@
 from rest_framework.permissions import AllowAny
 from django.core.cache import cache
 from rest_framework.views import APIView
+from drf_spectacular.utils import extend_schema
+
 from rest_framework.response import Response
 from rest_framework import status
 from shortener.selectors.selectors import get_active_url_by_code
@@ -10,6 +12,8 @@ from django.shortcuts import redirect
 class RedirectAPIView(APIView):
     permission_classes=[AllowAny]
     authentication_classes=[]
+    
+    
     
     def get(self,request,short_code):
         
