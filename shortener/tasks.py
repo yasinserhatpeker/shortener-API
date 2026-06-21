@@ -18,7 +18,7 @@ def sync_click_counts():
     updated_count = 0
     
     for key in keys:
-        short_code = key.split('click_')[-1]
+        short_code = key.split('clicks_')[-1]
         clicks = cache.get(key)
         
         if clicks and int(clicks) > 0:

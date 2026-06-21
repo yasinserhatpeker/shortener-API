@@ -30,7 +30,7 @@ services:
 
   celery_worker:
     build: .
-    command: celery -A shortener worker -l INFO
+    command: celery -A core worker -l INFO
     volumes:
       - .:/app
     env_file:          
@@ -41,7 +41,7 @@ services:
 
   celery_beat:
     build: .
-    command: celery -A shortener beat -l INFO
+    command: celery -A core beat -l INFO
     volumes:
       - .:/app
     env_file:          

@@ -16,8 +16,14 @@ class RedirectAPIView(APIView):
         url_item = get_active_url_by_code(short_code=short_code)
         
         if url_item:
+            cache_key = f"clicks_{short_code}"
             
-            cache.incr(f"clicks_{short_code}")
+            try:
+                cache.incr(cache_key)
+                
+            except ValueError:
+                cache.set(cache_key,1,timeout=None)
+                
             return redirect(url_item.original_url)
         
         else:
