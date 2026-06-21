@@ -31,7 +31,7 @@ class LogoutAPIView(APIView):  ## Logging out
     
     @extend_schema(
         request=UserLogoutSerializer,
-        responses={204:UserResponseSerializer},
+        responses={204:None},
         summary="Logging out",
         description="Logging out with blacklisting refresh token"
     )
