@@ -1,8 +1,8 @@
 from rest_framework.permissions import AllowAny
 from django.core.cache import cache
 from rest_framework.views import APIView
-from drf_spectacular.utils import extend_schema
-
+from drf_spectacular.utils import extend_schema,OpenApiParameter
+from drf_spectacular.types import OpenApiTypes
 from rest_framework.response import Response
 from rest_framework import status
 from shortener.selectors.selectors import get_active_url_by_code
@@ -13,7 +13,19 @@ class RedirectAPIView(APIView):
     permission_classes=[AllowAny]
     authentication_classes=[]
     
-    
+    @extend_schema(
+        request=None,
+        responses={302:None, 404:dict},
+        parameters=[OpenApiParameter(
+            name='short_code',
+            description="short url that redirected",
+            required=True,
+            type=OpenApiTypes.STR,
+            location=OpenApiParameter.PATH,
+        )],
+        summary="Redirected short url",
+        description="Redirect the short url to original url"
+    )
     
     def get(self,request,short_code):
         
