@@ -19,7 +19,7 @@ class RedirectAPIView(APIView):
             cache_key = f"clicks_{short_code}"
             
             try:
-                cache.incr(cache_key)
+                cache.incr(cache_key)  ## Write-behind caching using redis as a message broker
                 
             except ValueError:
                 cache.set(cache_key,1,timeout=None)

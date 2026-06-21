@@ -13,7 +13,7 @@ def get_active_urls_by_user(*,user) -> QuerySet[UrlItem]:
 def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]: # fetch the active short url related to the user
     now = timezone.now()
     cache_key = f"url_obj_{short_code}"
-    
+    # Cache-aside Caching
     cached_item = cache.get(cache_key)
     
     if cached_item:
