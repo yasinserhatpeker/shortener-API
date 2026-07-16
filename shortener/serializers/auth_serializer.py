@@ -10,7 +10,6 @@ class UserResponseSerializer(serializers.ModelSerializer): # API -> Client
         fields = ['id','email','username']
         
         
-
 class UserRegisterSerializer(serializers.ModelSerializer): # Client -> API(for validation)
     password = serializers.CharField(write_only=True, validators=[validate_password])
     

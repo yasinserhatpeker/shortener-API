@@ -7,7 +7,6 @@ from shortener.utils.sqids_helper import encode_id
 
 CACHE_TIMEOUT = 60 * 60 * 24
 
-
 def create_short_url(*,user,original_url:str,custom_alias:str = None) -> UrlItem:
     
     with transaction.atomic():
@@ -29,7 +28,7 @@ def create_short_url(*,user,original_url:str,custom_alias:str = None) -> UrlItem
         
         url_item.save(update_fields=['short_url'])
         
-        cache_key = f"url_obj{url_item.short_url}"  ## Write-through Caching
+        cache_key = f"url_obj{url_item.short_url}" 
         cache.set(cache_key, url_item, timeout=CACHE_TIMEOUT)
         
         

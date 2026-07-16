@@ -7,13 +7,13 @@ from django.utils import timezone
 CACHE_TIMEOUT = 60 * 60 * 24
 
 def get_active_urls_by_user(*,user) -> QuerySet[UrlItem]:
-    return UrlItem.objects.filter(user=user)  # fetch the all urls related to the user
+    return UrlItem.objects.filter(user=user) 
 
 
-def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]: # fetch the active short url related to the user
+def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]: 
     now = timezone.now()
     cache_key = f"url_obj_{short_code}"
-    # Cache-aside Caching
+   
     cached_item = cache.get(cache_key)
     
     if cached_item:
