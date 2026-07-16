@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.http import Http404
 
 
-class UrlCreateAPIView(APIView):   # creating short url from original url
+class UrlCreateAPIView(APIView):   
     permission_classes=[IsAuthenticated]
     @extend_schema(
         request=UrlItemCreateSerializer,
@@ -35,7 +35,7 @@ class UrlCreateAPIView(APIView):   # creating short url from original url
     
     
 
-class UrlListAPIView(APIView):  # get the list of the short url with authentication
+class UrlListAPIView(APIView):  
     permission_classes=[IsAuthenticated]
     
     @extend_schema(
@@ -52,7 +52,7 @@ class UrlListAPIView(APIView):  # get the list of the short url with authenticat
     
     
     
-class UrlDetailAPIView(APIView):    # with helper method(get_object) we're deleting the short url effortlessly
+class UrlDetailAPIView(APIView):
     permission_classes=[IsAuthenticated]
     
     def get_object(self,user,short_code):

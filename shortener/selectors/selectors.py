@@ -24,14 +24,14 @@ def get_active_url_by_code(*,short_code:str) -> Optional[UrlItem]:
     try:
      url_item = UrlItem.objects.filter(short_url=short_code).filter(Q(expires_at__isnull=True) | Q(expires_at__gt=now)).get()
      
-     cache.set(cache_key, url_item , timeout =CACHE_TIMEOUT)
+     cache.set(cache_key, url_item , timeout = CACHE_TIMEOUT)
      return url_item
  
     except UrlItem.DoesNotExist:
         return None
     
     
-def get_url_code_by_user(*,short_code:str,user) -> Optional[UrlItem]: # fetch the short urls by user
+def get_url_code_by_user(*,short_code:str,user) -> Optional[UrlItem]:
     try:
         return UrlItem.objects.get(user=user,short_url=short_code)
     
