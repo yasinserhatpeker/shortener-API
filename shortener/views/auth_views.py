@@ -7,7 +7,7 @@ from shortener.serializers.auth_serializer import UserResponseSerializer,UserReg
 from shortener.services.auth_service import create_user,logout_user
 
 
-class RegisterAPIView(APIView):     # Registering new user 
+class RegisterAPIView(APIView):    
     permission_classes=[AllowAny]
     
     @extend_schema(
@@ -26,7 +26,7 @@ class RegisterAPIView(APIView):     # Registering new user
         return Response(UserResponseSerializer(user).data, status=status.HTTP_201_CREATED)
         
 
-class LogoutAPIView(APIView):  ## Logging out 
+class LogoutAPIView(APIView): 
     permission_classes=[IsAuthenticated]
     
     @extend_schema(
